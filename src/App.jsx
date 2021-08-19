@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Navigation from 'components/Navigation/Navigation';
+import NavBar from 'components/NavBar/NavBar';
 import Container from 'components/Container/Container';
 
 const HomePage = lazy(() =>
@@ -21,28 +21,26 @@ const ContactsPage = lazy(() =>
 
 function App() {
   return (
-    <>
-      <Navigation />
-      <Container>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Switch>
-            <Route path="/" exact>
-              <HomePage />
-            </Route>
-            <Route path="/register">
-              <RegisterPage />
-            </Route>
-            <Route path="/login">
-              <LoginPage />
-            </Route>
-            <Route path="/contacts">
-              <ContactsPage />
-            </Route>
-            <Redirect to="/" />
-          </Switch>
-        </Suspense>
-      </Container>
-    </>
+    <Container>
+      <NavBar />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
+          <Route path="/register">
+            <RegisterPage />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Route path="/contacts">
+            <ContactsPage />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      </Suspense>
+    </Container>
   );
 }
 
