@@ -1,9 +1,10 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { Formik, Field, ErrorMessage, Form } from 'formik';
 import * as Yup from 'yup';
 import 'yup-phone';
 // import toast from 'react-hot-toast';
-// import { useAddContactMutation, contactApi } from 'services/contactApi';
+import { addContact, getFiltredContactsList } from 'redux/contacts';
 // import {
 //   FormContainer,
 //   Button,
@@ -20,22 +21,17 @@ const validationSchema = Yup.object().shape({
 });
 
 function ContactsForm() {
-  //   const { data } = contactApi.endpoints.fetchContacts.useQueryState(null, {});
-  //   const [addContact] = useAddContactMutation();
+  const contacts = useSelector(getFiltredContactsList);
+  const dispatch = useDispatch();
 
-  //   const handleAddContactOnSubmit = async newContact => {
-  //     if (data?.some(({ name }) => name === newContact.name)) {
-  //       toast.error(`Contact ${newContact.name} already exists`);
-  //       return;
-  //     }
-
-  //     try {
-  //       await addContact(newContact);
-  //       toast.success(`Contact ${newContact.name} created`);
-  //     } catch (error) {
-  //       toast.error(error);
-  //     }
-  //   };
+  const handleAddContactOnSubmit = newContact => {
+    if (contacts.some(({ name }) => name === newContact.name)) {
+      // toast.error(`Contact ${newContact.name} already exists`);
+      return;
+    }
+    dispatch(addContact(newContact));
+    // toast.success(`Contact ${newContact.name} created`);
+  };
 
   let nameInputId = nanoid(3);
   let phoneInputId = nanoid(3);
@@ -45,8 +41,8 @@ function ContactsForm() {
       initialValues={{ name: '', number: '' }}
       validationSchema={validationSchema}
       onSubmit={(values, { resetForm }) => {
-        // const { name, number } = values;
-        // handleAddContactOnSubmit({ name, number });
+        const { name, number } = values;
+        handleAddContactOnSubmit({ name, number });
         resetForm();
       }}
     >

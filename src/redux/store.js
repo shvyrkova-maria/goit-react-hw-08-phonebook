@@ -1,20 +1,16 @@
-// import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-// import { setupListeners } from '@reduxjs/toolkit/query';
-// import logger from 'redux-logger';
-// import contactsReducer from './contacts/contactsReducer';
-// import { contactApi } from 'services/contactApi';
+import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
+import contactsReducer from './contacts/contactsSlices';
+import authReduser from './auth/authSlices';
 
-// const middleware = [...getDefaultMiddleware(), logger, contactApi.middleware];
-// // const middleware = [...getDefaultMiddleware(), contactApi.middleware];
+const rootReducer = combineReducers({
+  contacts: contactsReducer,
+  auth: authReduser,
+});
 
-// const store = configureStore({
-//   reducer: {
-//     phonebook: contactsReducer,
-//     [contactApi.reducerPath]: contactApi.reducer,
-//   },
-//   devTools: process.env.NODE_ENV === 'development',
-//   middleware,
-// });
+const store = configureStore({
+  reducer: rootReducer,
+  devTools: process.env.NODE_ENV === 'development',
+});
 
-// setupListeners(store.dispatch);
-// export { store };
+export { store };

@@ -1,7 +1,9 @@
+import { useDispatch } from 'react-redux';
 // import PropTypes from 'prop-types'
 import { nanoid } from 'nanoid';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { signUp } from 'redux/auth';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -15,16 +17,23 @@ const validationSchema = Yup.object().shape({
 });
 
 function RegisterPage() {
+  const dispatch = useDispatch();
+
   let nameInputId = nanoid(3);
   let emailInputId = nanoid(3);
   let passwordInputId = nanoid(3);
+
+  const handleAddUserOnSubmit = newUser => {
+    dispatch(signUp(newUser));
+  };
+
   return (
     <Formik
       initialValues={{ name: '', email: '', password: '' }}
       validationSchema={validationSchema}
       onSubmit={(values, { resetForm }) => {
-        // const { name, email, password } = values;
-        // handleAddContactOnSubmit({ name, email, password });
+        const { name, email, password } = values;
+        handleAddUserOnSubmit({ name, email, password });
         resetForm();
       }}
     >

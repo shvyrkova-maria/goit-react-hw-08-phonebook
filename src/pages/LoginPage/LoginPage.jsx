@@ -1,7 +1,9 @@
+import { useDispatch } from 'react-redux';
 // import PropTypes from 'prop-types'
 import { nanoid } from 'nanoid';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { logIn } from 'redux/auth';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email().required('Required'),
@@ -11,15 +13,22 @@ const validationSchema = Yup.object().shape({
 });
 
 function LoginPage() {
+  const dispatch = useDispatch();
+
+  const handleLogInUserOnSubmit = user => {
+    dispatch(logIn(user));
+  };
+
   let emailInputId = nanoid(3);
   let passwordInputId = nanoid(3);
+
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
       validationSchema={validationSchema}
       onSubmit={(values, { resetForm }) => {
-        // const { name, email, password } = values;
-        // handleAddContactOnSubmit({  email, password });
+        const { email, password } = values;
+        handleLogInUserOnSubmit({ email, password });
         resetForm();
       }}
     >
