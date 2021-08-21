@@ -1,14 +1,23 @@
 import { useDispatch } from 'react-redux';
-// import PropTypes from 'prop-types'
+import { RiLockPasswordFill } from 'react-icons/ri';
+import { FiMail } from 'react-icons/fi';
 import { nanoid } from 'nanoid';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'redux/auth';
+
+import {
+  FormStyled,
+  FieldStyled,
+  Button,
+  Label,
+  ValidationMessage,
+} from 'pages/LoginPage/LoginPage.styled';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email().required('Required'),
   password: Yup.string()
-    .min(6, 'Password is too short - should be 6 chars minimum.')
+    .min(7, 'Password is too short - should be 7 chars minimum.')
     .required('Required'),
 });
 
@@ -32,34 +41,37 @@ function LoginPage() {
         resetForm();
       }}
     >
-      <Form>
-        <label htmlFor={`id-${emailInputId}`}>Email</label>
-        <Field
+      <FormStyled>
+        <h2>Login in your accout</h2>
+        <Label htmlFor={`id-${emailInputId}`}>
+          <FiMail />
+          Email
+        </Label>
+
+        <FieldStyled
           name="email"
           type="email"
           id={`id-${emailInputId}`}
           placeholder="example@gmail.com"
         />
-        <ErrorMessage name="email" />
-        {/* <ErrorMessage name="number" component={ValidationMessage} /> */}
 
-        <label htmlFor={`id-${passwordInputId}`}>Password</label>
-        <Field
+        <ErrorMessage name="email" component={ValidationMessage} />
+        <Label htmlFor={`id-${passwordInputId}`}>
+          <RiLockPasswordFill />
+          Password
+        </Label>
+
+        <FieldStyled
           name="password"
           type="password"
           id={`id-${passwordInputId}`}
           placeholder="your password"
         />
-        <ErrorMessage name="password" />
-
-        <button type="submit">Log in</button>
-      </Form>
+        <ErrorMessage name="password" component={ValidationMessage} />
+        <Button type="submit">Log in</Button>
+      </FormStyled>
     </Formik>
   );
 }
-
-// LoginPage.propTypes = {
-
-// }
 
 export default LoginPage;

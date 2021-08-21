@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 function AuthNav() {
   return (
-    <>
+    <div>
       <NavLink to="/register" exact>
-        Register
+        Sign In
       </NavLink>
       <NavLink to="/login" exact>
         Login
       </NavLink>
-    </>
+    </div>
   );
 }
 
