@@ -1,4 +1,8 @@
-export { getUserIsLoggedIn, getUserName } from 'redux/auth/authSelectors';
+export {
+  getUserIsLoggedIn,
+  getUserName,
+  getIsFetchCurrentUser,
+} from 'redux/auth/authSelectors';
 export {
   signUp,
   logIn,
