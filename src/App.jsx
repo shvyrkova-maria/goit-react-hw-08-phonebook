@@ -1,5 +1,10 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { lazy, Suspense } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
+import PublicRoute from 'components/PublicRoute';
+import PrivateRoute from 'components/PrivateRoute';
+import { getCurrentUser } from 'redux/auth';
 import NavBar from 'components/NavBar/NavBar';
 import Container from 'components/Container/Container';
 
@@ -20,23 +25,29 @@ const ContactsPage = lazy(() =>
 );
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
   return (
     <Container>
       <NavBar />
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          <Route path="/" exact>
+          <PublicRoute path="/" exact>
             <HomePage />
-          </Route>
-          <Route path="/register">
+          </PublicRoute>
+          <PublicRoute path="/register" resticted>
             <RegisterPage />
-          </Route>
-          <Route path="/login">
+          </PublicRoute>
+          <PublicRoute path="/login" redirectTo="/contacts" resticted>
             <LoginPage />
-          </Route>
-          <Route path="/contacts">
+          </PublicRoute>
+          <PrivateRoute path="/contacts" redirectTo="/login">
             <ContactsPage />
-          </Route>
+          </PrivateRoute>
           <Redirect to="/" />
         </Switch>
       </Suspense>
@@ -45,3 +56,24 @@ function App() {
 }
 
 export default App;
+
+//           {
+//             /* <Route path="/" exact>
+//             <HomePage />
+//           </Route> */
+//           }
+//           {
+//             /* <Route path="/register">
+//             <RegisterPage />
+//           </Route> */
+//           }
+//           {
+//             /* <Route path="/login">
+//             <LoginPage />
+//           </Route> */
+// }
+//                     {
+//                       /* <Route path="/contacts">
+//             <ContactsPage />
+//           </Route> */
+//                     }

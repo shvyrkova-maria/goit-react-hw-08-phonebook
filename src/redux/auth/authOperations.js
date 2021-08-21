@@ -27,4 +27,19 @@ const logOut = createAsyncThunk('auth/logOut', async () => {
   }
 });
 
-export { signUp, logIn, logOut };
+const getCurrentUser = createAsyncThunk(
+  'auth/getCurrentUser',
+  async (_, { getState, rejectWithValue }) => {
+    const state = getState();
+    const savedToken = state.auth.token;
+    if (savedToken === null) return rejectWithValue();
+    try {
+      const data = await authApi.fetchCurrentUser(savedToken);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+);
+
+export { signUp, logIn, logOut, getCurrentUser };

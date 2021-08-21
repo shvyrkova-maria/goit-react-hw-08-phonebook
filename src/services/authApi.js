@@ -28,8 +28,8 @@ export async function logOutUser() {
   token.unset();
 }
 
-export async function getCurrentUser() {
+export async function fetchCurrentUser(savedToken) {
+  token.set(savedToken);
   const { data } = await axios.get(`/users/current`);
-  console.log(data);
   return data;
 }

@@ -1,22 +1,21 @@
-// import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import { DebounceInput } from 'react-debounce-input';
-// import { actions } from 'redux/contacts';
-// import { getFilterValue } from 'redux/contacts/contactsSelectors';
+import { getFilterValue } from 'redux/contacts';
 
 function Filter() {
-  //   const filter = useSelector(getFilterValue);
-  //   const dispatch = useDispatch();
+  const filter = useSelector(getFilterValue);
+  const dispatch = useDispatch();
 
   return (
     <DebounceInput
       id={`id-${nanoid(3)}`}
       type="text"
       name="name"
-      //   value={filter}
+      value={filter}
       debounceTimeout={700}
-      //   onChange={event => dispatch(actions.getFilterValue(event.target.value))}
+      onChange={event => dispatch(getFilterValue(event.target.value))}
       placeholder="Search"
     />
   );

@@ -12,7 +12,7 @@ const contactsSlice = createSlice({
     [addContact.fulfilled]: (state, { payload }) => [payload, ...state],
 
     [deleteContact.fulfilled]: (state, { payload }) => {
-      state.filter(contact => contact.id !== payload);
+      return state.filter(contact => contact.id !== payload);
     },
   },
 });
