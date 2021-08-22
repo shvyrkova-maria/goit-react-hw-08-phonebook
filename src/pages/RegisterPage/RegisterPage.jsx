@@ -3,7 +3,7 @@ import { RiLockPasswordFill, RiUser3Fill } from 'react-icons/ri';
 import { FiMail } from 'react-icons/fi';
 import { nanoid } from 'nanoid';
 import { Formik, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { registerValidationSchema } from 'utils/YupValidationSchemes';
 import { signUp } from 'redux/auth';
 import {
   FormWrap,
@@ -13,17 +13,6 @@ import {
   Label,
   ValidationMessage,
 } from 'styles/common.styled';
-
-const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  email: Yup.string().email().required('Required'),
-  password: Yup.string()
-    .min(6, 'Password is too short - should be 6 chars minimum.')
-    .required('Required'),
-});
 
 function RegisterPage() {
   const dispatch = useDispatch();
@@ -39,7 +28,7 @@ function RegisterPage() {
   return (
     <Formik
       initialValues={{ name: '', email: '', password: '' }}
-      validationSchema={validationSchema}
+      validationSchema={registerValidationSchema}
       onSubmit={(values, { resetForm }) => {
         const { name, email, password } = values;
         handleAddUserOnSubmit({ name, email, password });
@@ -47,7 +36,7 @@ function RegisterPage() {
       }}
     >
       <FormWrap>
-        <FormStyled>
+        <FormStyled autoComplete="off">
           <h2>Create your accout</h2>
           <Label htmlFor={`id-${nameInputId}`}>
             <RiUser3Fill />
@@ -85,7 +74,7 @@ function RegisterPage() {
           />
           <ErrorMessage name="password" component={ValidationMessage} />
 
-          <Button type="submit">Sing up</Button>
+          <Button type="submit">Join</Button>
         </FormStyled>
       </FormWrap>
     </Formik>

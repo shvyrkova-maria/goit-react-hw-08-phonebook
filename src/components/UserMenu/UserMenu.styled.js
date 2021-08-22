@@ -15,9 +15,9 @@ export const Button = styled.button`
   display: inline-block;
   padding: 6px 12px;
   font-size: 12px;
-  font-weight: 500;
-  background-color: var(--base-color);
-  color: white;
+  font-weight: 700;
+  background-color: var(--text-color);
+  color: var(--base-color);
   border-radius: var(--border-radius);
   border: 1px solid transparent;
   cursor: pointer;

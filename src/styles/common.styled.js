@@ -33,8 +33,15 @@ export const FieldStyled = styled(Field)`
   padding: 8px 0;
   margin-bottom: 5px;
   background-color: transparent;
+  font-size: 16px;
+  color: var(--base-color);
   border: none;
-  border-bottom: 1px solid #7c899d;
+  outline: none;
+  border-bottom: 1px solid var(--base-color);
+  &:focus,
+  &:hover {
+    border-bottom: 1px solid var(--accent-color);
+  }
   &::placeholder {
     font-size: 14px;
   }

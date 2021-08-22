@@ -3,7 +3,7 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { FiMail } from 'react-icons/fi';
 import { nanoid } from 'nanoid';
 import { Formik, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { LogInValidationSchema } from 'utils/YupValidationSchemes';
 import { logIn } from 'redux/auth';
 import {
   FormWrap,
@@ -13,13 +13,6 @@ import {
   Label,
   ValidationMessage,
 } from 'styles/common.styled';
-
-const validationSchema = Yup.object().shape({
-  email: Yup.string().email().required('Required'),
-  password: Yup.string()
-    .min(7, 'Password is too short - should be 7 chars minimum.')
-    .required('Required'),
-});
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -34,7 +27,7 @@ function LoginPage() {
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
-      validationSchema={validationSchema}
+      validationSchema={LogInValidationSchema}
       onSubmit={(values, { resetForm }) => {
         const { email, password } = values;
         handleLogInUserOnSubmit({ email, password });
@@ -42,7 +35,7 @@ function LoginPage() {
       }}
     >
       <FormWrap>
-        <FormStyled>
+        <FormStyled autoComplete="off">
           <h2>Login to your accout</h2>
           <Label htmlFor={`id-${emailInputId}`}>
             <FiMail />

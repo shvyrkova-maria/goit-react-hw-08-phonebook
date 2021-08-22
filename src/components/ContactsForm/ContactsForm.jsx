@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { Formik, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import 'yup-phone';
 import toast from 'react-hot-toast';
+import { addContactValidationSchema } from 'utils/YupValidationSchemes';
 import { addContact, getFiltredContactsList } from 'redux/contacts';
 import {
   FormStyled,
@@ -12,14 +11,6 @@ import {
   Label,
   ValidationMessage,
 } from 'styles/common.styled';
-
-const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
-  number: Yup.string().phone('+38', true, 'Valid number type +380*********'),
-});
 
 function ContactsForm() {
   const contacts = useSelector(getFiltredContactsList);
@@ -40,14 +31,14 @@ function ContactsForm() {
   return (
     <Formik
       initialValues={{ name: '', number: '' }}
-      validationSchema={validationSchema}
+      validationSchema={addContactValidationSchema}
       onSubmit={(values, { resetForm }) => {
         const { name, number } = values;
         handleAddContactOnSubmit({ name, number });
         resetForm();
       }}
     >
-      <FormStyled>
+      <FormStyled autoComplete="off">
         <Label htmlFor={`id-${nameInputId}`}>Name</Label>
         <FieldStyled
           name="name"

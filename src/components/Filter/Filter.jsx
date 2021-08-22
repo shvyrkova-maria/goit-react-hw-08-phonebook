@@ -32,6 +32,8 @@ function Filter() {
           name="name"
           value={filter}
           debounceTimeout={700}
+          autoFocus
+          autoComplete="off"
           onChange={event => dispatch(setFilterValue(event.target.value))}
           placeholder="Search"
         />
