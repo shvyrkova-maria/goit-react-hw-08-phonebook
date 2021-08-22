@@ -3,6 +3,12 @@ import { NavLink } from 'react-router-dom';
 import { Form, Field } from 'formik';
 
 //links
+export const NavWrap = styled.div`
+  & > a:first-of-type {
+    margin-right: 10px;
+  }
+`;
+
 export const NavLinkStyled = styled(NavLink)`
   &:hover,
   &:focus {
@@ -14,11 +20,11 @@ export const NavLinkStyled = styled(NavLink)`
 export const FormStyled = styled(Form)`
   display: flex;
   flex-direction: column;
-  max-width: 400px;
-  padding: 40px 25px;
+  min-width: 400px;
+  padding: 55px 30px;
   border: 1px solid transparent;
   border-radius: var(--border-radius);
-  background-color: var(--color);
+  background-color: var(--bg-color);
   box-shadow: var(--main-shadow);
 `;
 
@@ -27,7 +33,6 @@ export const FieldStyled = styled(Field)`
   padding: 8px 0;
   margin-bottom: 5px;
   background-color: transparent;
-  /* background-color: rgba(124, 137, 157, 0.1); */
   border: none;
   border-bottom: 1px solid #7c899d;
   &::placeholder {
@@ -55,7 +60,7 @@ export const Button = styled.button`
   font-size: 15px;
   font-weight: 700;
   background-color: var(--accent-color);
-  color: white;
+  color: var(--text-color);
   text-transform: uppercase;
   border-radius: var(--border-radius);
   border: 1px solid transparent;
@@ -71,12 +76,6 @@ export const ValidationMessage = styled.div`
   color: red;
   margin-top: 5px;
   margin-bottom: 5px;
-`;
-
-export const NavWrap = styled.div`
-  & > a:first-of-type {
-    margin-right: 10px;
-  }
 `;
 
 export const FormWrap = styled.div`

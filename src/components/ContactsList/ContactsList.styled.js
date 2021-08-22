@@ -13,8 +13,8 @@ export const Li = styled.li`
   justify-content: space-between;
   width: 100%;
   padding: 10px 12px;
-  background-color: var(--color);
-  border: 1px solid var(--color);
+  background-color: var(--bg-color);
+  border: 1px solid var(--bg-color);
   border-radius: 5px;
   animation: scaleIn 1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
   &:not(:last-child) {
@@ -41,7 +41,7 @@ export const Div = styled.div`
   }
 
   &:not(:last-child) {
-    color: white;
+    color: var(--text-color);
     margin-bottom: 5px;
   }
 `;
@@ -52,7 +52,7 @@ export const Button = styled.button`
   padding: 8px 12px;
   font-size: 12px;
   font-weight: 700;
-  color: white;
+  color: var(--text-color);
   text-transform: uppercase;
   background-color: var(--accent-color);
   border-radius: 5px;

@@ -9,8 +9,7 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 0px;
   font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;

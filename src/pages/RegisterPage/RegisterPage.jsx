@@ -12,7 +12,7 @@ import {
   Button,
   Label,
   ValidationMessage,
-} from 'pages/LoginPage/LoginPage.styled';
+} from 'styles/common.styled';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()

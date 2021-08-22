@@ -5,7 +5,6 @@ import { nanoid } from 'nanoid';
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'redux/auth';
-
 import {
   FormWrap,
   FormStyled,
@@ -13,7 +12,7 @@ import {
   Button,
   Label,
   ValidationMessage,
-} from 'pages/LoginPage/LoginPage.styled';
+} from 'styles/common.styled';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email().required('Required'),

@@ -25,8 +25,8 @@ export const Button = styled.div`
   &:hover,
   &:focus {
     background-color: var(--accent-color);
-    color: black;
-    box-shadow: var(--main-shadow);
+    color: white;
+    box-shadow: var(--base-shadow);
   }
 `;
 
