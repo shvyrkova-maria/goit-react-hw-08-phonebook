@@ -18,7 +18,7 @@ export const Button = styled.div`
   padding: 10px;
   margin-right: 20px;
   background-color: white;
-  color: black;
+  color: var(--main-color);
   border: 1px solid transparent;
   border-radius: 50%;
   cursor: pointer;

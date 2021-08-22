@@ -6,6 +6,7 @@ import Toast from 'components/Toast/Toast.jsx';
 import PublicRoute from 'components/Routes/PublicRoute';
 import PrivateRoute from 'components/Routes/PrivateRoute';
 import { getCurrentUser, getIsFetchCurrentUser } from 'redux/auth';
+import Spinner from 'components/Spinner/Spinner.jsx';
 import NavBar from 'components/NavBar/NavBar';
 import Container from 'components/Container/Container';
 
@@ -38,7 +39,7 @@ function App() {
       <>
         <NavBar />
         <Container>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Spinner />}>
             <Switch>
               <PublicRoute path="/" exact>
                 <HomePage />
