@@ -1,9 +1,18 @@
 import { useDispatch } from 'react-redux';
-// import PropTypes from 'prop-types'
+import { RiLockPasswordFill, RiUser3Fill } from 'react-icons/ri';
+import { FiMail } from 'react-icons/fi';
 import { nanoid } from 'nanoid';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { signUp } from 'redux/auth';
+import {
+  FormWrap,
+  FormStyled,
+  FieldStyled,
+  Button,
+  Label,
+  ValidationMessage,
+} from 'pages/LoginPage/LoginPage.styled';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -37,44 +46,50 @@ function RegisterPage() {
         resetForm();
       }}
     >
-      <Form>
-        <label htmlFor={`id-${nameInputId}`}>Name</label>
-        <Field
-          name="name"
-          type="text"
-          id={`id-${nameInputId}`}
-          placeholder="Name"
-        />
-        {/* <ErrorMessage name="name" component={ValidationMessage} /> */}
-        <ErrorMessage name="name" />
+      <FormWrap>
+        <FormStyled>
+          <h2>Create your accout</h2>
+          <Label htmlFor={`id-${nameInputId}`}>
+            <RiUser3Fill />
+            Name
+          </Label>
+          <FieldStyled
+            name="name"
+            type="text"
+            id={`id-${nameInputId}`}
+            placeholder="name"
+          />
+          <ErrorMessage name="name" component={ValidationMessage} />
 
-        <label htmlFor={`id-${emailInputId}`}>Email</label>
-        <Field
-          name="email"
-          type="email"
-          id={`id-${emailInputId}`}
-          placeholder="example@gmail.com"
-        />
-        <ErrorMessage name="email" />
-        {/* <ErrorMessage name="number" component={ValidationMessage} /> */}
+          <Label htmlFor={`id-${emailInputId}`}>
+            <FiMail />
+            Email
+          </Label>
+          <FieldStyled
+            name="email"
+            type="email"
+            id={`id-${emailInputId}`}
+            placeholder="example@gmail.com"
+          />
+          <ErrorMessage name="email" component={ValidationMessage} />
 
-        <label htmlFor={`id-${passwordInputId}`}>Password</label>
-        <Field
-          name="password"
-          type="password"
-          id={`id-${passwordInputId}`}
-          placeholder="your password"
-        />
-        <ErrorMessage name="password" />
+          <Label htmlFor={`id-${passwordInputId}`}>
+            <RiLockPasswordFill />
+            Password
+          </Label>
+          <FieldStyled
+            name="password"
+            type="password"
+            id={`id-${passwordInputId}`}
+            placeholder="password"
+          />
+          <ErrorMessage name="password" component={ValidationMessage} />
 
-        <button type="submit">Sing up</button>
-      </Form>
+          <Button type="submit">Sing up</Button>
+        </FormStyled>
+      </FormWrap>
     </Formik>
   );
 }
-
-// RegisterPage.propTypes = {
-
-// }
 
 export default RegisterPage;

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { getUserIsLoggedIn } from 'redux/auth';
 
 function PublicRoute({
@@ -19,8 +19,8 @@ function PublicRoute({
   );
 }
 
-// PublicRoute.propTypes = {
-
-// }
+PublicRoute.propTypes = {
+  isLoggedIn: PropTypes.bool,
+};
 
 export default PublicRoute;

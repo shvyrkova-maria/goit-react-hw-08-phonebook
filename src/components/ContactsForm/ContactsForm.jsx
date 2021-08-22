@@ -1,16 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
-import { Formik, Field, ErrorMessage, Form } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import 'yup-phone';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
+
 import { addContact, getFiltredContactsList } from 'redux/contacts';
-// import {
-//   FormContainer,
-//   Button,
-//   Label,
-//   ValidationMessage,
-// } from 'components/ContactsForm/ContactsForm.styled';
+import {
+  FormStyled,
+  FieldStyled,
+  Button,
+  Label,
+  ValidationMessage,
+} from 'pages/LoginPage/LoginPage.styled';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -26,11 +28,11 @@ function ContactsForm() {
 
   const handleAddContactOnSubmit = newContact => {
     if (contacts.some(({ name }) => name === newContact.name)) {
-      // toast.error(`Contact ${newContact.name} already exists`);
+      toast.error(`Contact ${newContact.name} already exists`);
       return;
     }
     dispatch(addContact(newContact));
-    // toast.success(`Contact ${newContact.name} created`);
+    toast.success(`Contact ${newContact.name} created`);
   };
 
   let nameInputId = nanoid(3);
@@ -46,29 +48,27 @@ function ContactsForm() {
         resetForm();
       }}
     >
-      <Form>
-        <label htmlFor={`id-${nameInputId}`}>Name</label>
-        <Field
+      <FormStyled>
+        <Label htmlFor={`id-${nameInputId}`}>Name</Label>
+        <FieldStyled
           name="name"
           type="text"
           id={`id-${nameInputId}`}
-          placeholder="Name"
+          placeholder="name"
         />
-        {/* <ErrorMessage name="name" component={ValidationMessage} /> */}
-        <ErrorMessage name="name" />
+        <ErrorMessage name="name" component={ValidationMessage} />
 
-        <label htmlFor={`id-${phoneInputId}`}>Number</label>
-        <Field
+        <Label htmlFor={`id-${phoneInputId}`}>Number</Label>
+        <FieldStyled
           name="number"
           type="tel"
           id={`id-${phoneInputId}`}
           placeholder="+380*********"
         />
-        {/* <ErrorMessage name="number" component={ValidationMessage} /> */}
-        <ErrorMessage name="name" />
+        <ErrorMessage name="number" component={ValidationMessage} />
 
-        <button type="submit">Add contact</button>
-      </Form>
+        <Button type="submit">Add contact</Button>
+      </FormStyled>
     </Formik>
   );
 }

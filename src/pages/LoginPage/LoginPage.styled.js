@@ -1,12 +1,13 @@
-import { Form, Field } from 'formik';
 import styled from '@emotion/styled/macro';
+import { Form, Field } from 'formik';
 
 export const FormStyled = styled(Form)`
   display: flex;
   flex-direction: column;
-  max-width: 400px;
-
-  padding: 40px 25px;
+  min-width: 400px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  padding: 55px 30px;
   border: 1px solid transparent;
   border-radius: var(--border-radius);
   background-color: var(--color);
@@ -15,10 +16,9 @@ export const FormStyled = styled(Form)`
 
 export const FieldStyled = styled(Field)`
   width: 100%;
-  padding: 8px;
+  padding: 8px 0;
   margin-bottom: 5px;
   background-color: transparent;
-  /* background-color: rgba(124, 137, 157, 0.1); */
   border: none;
   border-bottom: 1px solid #7c899d;
   &::placeholder {
@@ -45,7 +45,7 @@ export const Button = styled.button`
   margin-top: 20px;
   font-size: 15px;
   font-weight: 700;
-  background-color: var(--base-color);
+  background-color: var(--accent-color);
   color: white;
   text-transform: uppercase;
   border-radius: var(--border-radius);
@@ -53,9 +53,7 @@ export const Button = styled.button`
   cursor: pointer;
   &:hover,
   &:focus {
-    background-color: var(--accent-color);
-    color: black;
-    box-shadow: var(--main-shadow);
+    box-shadow: var(--base-shadow);
   }
 `;
 
@@ -64,4 +62,12 @@ export const ValidationMessage = styled.div`
   color: red;
   margin-top: 5px;
   margin-bottom: 5px;
+`;
+
+export const FormWrap = styled.div`
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

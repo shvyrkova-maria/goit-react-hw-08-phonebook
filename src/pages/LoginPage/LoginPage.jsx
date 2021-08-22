@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { logIn } from 'redux/auth';
 
 import {
+  FormWrap,
   FormStyled,
   FieldStyled,
   Button,
@@ -41,35 +42,37 @@ function LoginPage() {
         resetForm();
       }}
     >
-      <FormStyled>
-        <h2>Login in your accout</h2>
-        <Label htmlFor={`id-${emailInputId}`}>
-          <FiMail />
-          Email
-        </Label>
+      <FormWrap>
+        <FormStyled>
+          <h2>Login to your accout</h2>
+          <Label htmlFor={`id-${emailInputId}`}>
+            <FiMail />
+            Email
+          </Label>
 
-        <FieldStyled
-          name="email"
-          type="email"
-          id={`id-${emailInputId}`}
-          placeholder="example@gmail.com"
-        />
+          <FieldStyled
+            name="email"
+            type="email"
+            id={`id-${emailInputId}`}
+            placeholder="example@gmail.com"
+          />
 
-        <ErrorMessage name="email" component={ValidationMessage} />
-        <Label htmlFor={`id-${passwordInputId}`}>
-          <RiLockPasswordFill />
-          Password
-        </Label>
+          <ErrorMessage name="email" component={ValidationMessage} />
+          <Label htmlFor={`id-${passwordInputId}`}>
+            <RiLockPasswordFill />
+            Password
+          </Label>
 
-        <FieldStyled
-          name="password"
-          type="password"
-          id={`id-${passwordInputId}`}
-          placeholder="your password"
-        />
-        <ErrorMessage name="password" component={ValidationMessage} />
-        <Button type="submit">Log in</Button>
-      </FormStyled>
+          <FieldStyled
+            name="password"
+            type="password"
+            id={`id-${passwordInputId}`}
+            placeholder="password"
+          />
+          <ErrorMessage name="password" component={ValidationMessage} />
+          <Button type="submit">Log in</Button>
+        </FormStyled>
+      </FormWrap>
     </Formik>
   );
 }

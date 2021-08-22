@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import PropTypes from 'prop-types';
-// import toast from 'react-hot-toast';
-// import { FaUser, FaPhoneAlt } from 'react-icons/fa';
+import PropTypes from 'prop-types';
+import toast from 'react-hot-toast';
+import { FaUser, FaPhoneAlt } from 'react-icons/fa';
 import {
   fetchContacts,
   deleteContact,
@@ -10,12 +10,12 @@ import {
   getLoadingStatus,
 } from 'redux/contacts';
 
-// import {
-//   Contacts,
-//   ContactsItem,
-//   ContactsDetails,
-//   Button,
-// } from 'components/ContactsList/ContactsList.styled';
+import {
+  Ul,
+  Li,
+  Div,
+  Button,
+} from 'components/ContactsList/ContactsList.styled';
 
 function ContactsList() {
   const isLoading = useSelector(getLoadingStatus);
@@ -28,40 +28,40 @@ function ContactsList() {
 
   const handleOnDeleteBtn = (id, name) => {
     dispatch(deleteContact(id));
-    // toast.success(`Contact ${name} deleted`);
+    toast.success(`Contact ${name} deleted`);
   };
 
   return (
-    <ul>
+    <Ul>
       {contacts &&
         contacts.map(({ id, name, number }) => {
           return (
-            <li key={id}>
+            <Li key={id}>
               <div>
-                <div>
-                  {/* <FaUser size={14} /> */}
+                <Div>
+                  <FaUser size={16} />
                   <span>
                     <b>{name}</b>
                   </span>
-                </div>
-                <div>
-                  {/* <FaPhoneAlt size={14} /> */}
+                </Div>
+                <Div>
+                  <FaPhoneAlt size={16} />
                   <span>{number}</span>
-                </div>
+                </Div>
               </div>
-              <button type="button" onClick={() => handleOnDeleteBtn(id, name)}>
+              <Button type="button" onClick={() => handleOnDeleteBtn(id, name)}>
                 Delete
-              </button>
-            </li>
+              </Button>
+            </Li>
           );
         })}
       {isLoading && <div>Loading...</div>}
-    </ul>
+    </Ul>
   );
 }
 
-// ContactsList.propTypes = {
-//   contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
-// };
+ContactsList.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
+};
 
 export default ContactsList;

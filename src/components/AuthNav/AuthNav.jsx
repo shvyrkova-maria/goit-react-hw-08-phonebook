@@ -1,20 +1,16 @@
-// import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavWrap, NavLinkStyled } from 'common.styled';
 
 function AuthNav() {
   return (
-    <div>
-      <NavLink to="/register" exact>
-        Sign In
-      </NavLink>
-      <NavLink to="/login" exact>
+    <NavWrap>
+      <NavLinkStyled activeStyle={{ color: '#ec8e11' }} to="/register" exact>
+        Sign Up
+      </NavLinkStyled>
+      <NavLinkStyled activeStyle={{ color: '#ec8e11' }} to="/login" exact>
         Login
-      </NavLink>
-    </div>
+      </NavLinkStyled>
+    </NavWrap>
   );
 }
-
-// AuthNav.propTypes = {
-// }
 
 export default AuthNav;

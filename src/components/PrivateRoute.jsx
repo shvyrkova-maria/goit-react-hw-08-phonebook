@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { getUserIsLoggedIn } from 'redux/auth';
 
 function PrivateRoute({ children, redirectTo = '/', ...routeProps }) {
@@ -11,8 +11,8 @@ function PrivateRoute({ children, redirectTo = '/', ...routeProps }) {
     </Route>
   );
 }
-// PrivateRoute.propTypes = {
-
-// }
+PrivateRoute.propTypes = {
+  isLoggedIn: PropTypes.bool,
+};
 
 export default PrivateRoute;

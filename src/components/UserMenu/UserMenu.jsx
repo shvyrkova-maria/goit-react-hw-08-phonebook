@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import PropTypes from 'prop-types'
 import { getUserName } from 'redux/auth';
 import { logOut } from 'redux/auth';
+import { MenuWrap, Button } from 'components/UserMenu/UserMenu.styled';
 
 function UserMenu() {
   const user = useSelector(getUserName);
@@ -12,16 +12,13 @@ function UserMenu() {
   };
 
   return (
-    <div>
-      <div>{user}</div>
-      <button type="button" onClick={handleLogOutOnClick}>
+    <MenuWrap>
+      <p> {`Welcome, ${user}`}</p>
+      <Button type="button" onClick={handleLogOutOnClick}>
         Log Out
-      </button>
-    </div>
+      </Button>
+    </MenuWrap>
   );
 }
-
-// UserMenu.propTypes = {
-// }
 
 export default UserMenu;

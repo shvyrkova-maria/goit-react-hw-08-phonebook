@@ -5,9 +5,9 @@
   --base-color: #7c899d;
   --accent-color: #ec8e11;
   --color: rgba(124, 137, 157, 0.1);
-  /* --main-shadow: 0px 1px 12px 4px white; */
   --main-shadow: 0px 1px 12px 4px rgba(0, 0, 0, 0.3);
-  --border-radius: 10px;
+  --base-shadow: 0px 1px 12px 4px rgba(255, 255, 255, 0.3);
+  --border-radius: 5px;
 }
 
 body {
@@ -16,8 +16,8 @@ body {
   text-rendering: optimizeSpeed;
   background-color: var(--main-color);
   color: white;
-  line-height: 1.5;
-  font-family: 'Poppins', Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.2;
+  font-family: 'Poppins', Roboto, 'Open Sans', sans-serif;
   font-size: 18px;
 }
 

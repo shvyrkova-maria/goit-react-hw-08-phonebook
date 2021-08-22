@@ -1,11 +1,6 @@
-// import PropTypes from 'prop-types'
+import { НomePageStyled } from 'pages/HomePage/HomePage.styled';
 
-function HomePage(props) {
-  return <div></div>;
+function HomePage() {
+  return <НomePageStyled />;
 }
-
-// HomePage.propTypes = {
-
-// }
-
 export default HomePage;
