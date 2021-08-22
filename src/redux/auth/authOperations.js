@@ -2,29 +2,17 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as authApi from 'services/authApi';
 
 const signUp = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const data = await authApi.signUpUser(credentials);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+  const data = await authApi.signUpUser(credentials);
+  return data;
 });
 
 const logIn = createAsyncThunk('auth/logIn', async credentials => {
-  try {
-    const data = await authApi.logInUser(credentials);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+  const data = await authApi.logInUser(credentials);
+  return data;
 });
 
 const logOut = createAsyncThunk('auth/logOut', async () => {
-  try {
-    await authApi.logOutUser();
-  } catch (error) {
-    console.log(error);
-  }
+  await authApi.logOutUser();
 });
 
 const getCurrentUser = createAsyncThunk(
@@ -33,12 +21,8 @@ const getCurrentUser = createAsyncThunk(
     const state = getState();
     const savedToken = state.auth.token;
     if (savedToken === null) return rejectWithValue();
-    try {
-      const data = await authApi.fetchCurrentUser(savedToken);
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
+    const data = await authApi.fetchCurrentUser(savedToken);
+    return data;
   },
 );
 

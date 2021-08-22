@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { getUserIsLoggedIn } from 'redux/auth';
-import { NavWrap, NavLinkStyled } from 'common.styled';
-// import { NavLinkStyled } from 'components/MainNav/MainNav.styled';
+import { NavWrap, NavLinkStyled } from 'styles/common.styled';
 
 function MainNav() {
   const isLoggedIn = useSelector(getUserIsLoggedIn);

@@ -1,4 +1,4 @@
-import { NavWrap, NavLinkStyled } from 'common.styled';
+import { NavWrap, NavLinkStyled } from 'styles/common.styled';
 
 function AuthNav() {
   return (
