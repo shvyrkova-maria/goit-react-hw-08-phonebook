@@ -4,17 +4,24 @@ export const MenuWrap = styled.div`
   display: flex;
   align-items: center;
   & > p {
-    font-size: 15px;
-    font-weight: 400;
-    text-transform: capitalize;
-    margin-right: 10px;
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    & > p {
+      display: block;
+      font-size: 15px;
+      font-weight: 400;
+      text-transform: capitalize;
+      margin-right: 10px;
+    }
   }
 `;
 
 export const Button = styled.button`
   display: inline-block;
-  padding: 6px 12px;
-  font-size: 12px;
+  width: 100%;
+  padding: 4px 10px;
+  font-size: 10px;
   font-weight: 700;
   background-color: var(--text-color);
   color: var(--base-color);
@@ -26,5 +33,11 @@ export const Button = styled.button`
     background-color: var(--accent-color);
     color: white;
     box-shadow: var(--base-shadow);
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 700;
   }
 `;

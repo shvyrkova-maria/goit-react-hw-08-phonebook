@@ -20,12 +20,33 @@ export const NavLinkStyled = styled(NavLink)`
 export const FormStyled = styled(Form)`
   display: flex;
   flex-direction: column;
-  min-width: 400px;
-  padding: 55px 30px;
+  min-width: 250px;
+  padding: 35px 20px;
   border: 1px solid transparent;
   border-radius: var(--border-radius);
   background-color: var(--bg-color);
   box-shadow: var(--main-shadow);
+
+  @media screen and (min-width: 425px) {
+    width: 325px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 55px 30px;
+    width: 420px;
+  }
+`;
+
+export const FormTitle = styled.h1`
+  font-size: 20px;
+
+  @media screen and (min-width: 425px) {
+    font-size: 22px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 27px;
+  }
 `;
 
 export const FieldStyled = styled(Field)`

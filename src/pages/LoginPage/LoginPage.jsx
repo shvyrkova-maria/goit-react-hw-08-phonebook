@@ -8,6 +8,7 @@ import { logIn } from 'redux/auth';
 import {
   FormWrap,
   FormStyled,
+  FormTitle,
   FieldStyled,
   Button,
   Label,
@@ -36,7 +37,7 @@ function LoginPage() {
     >
       <FormWrap>
         <FormStyled autoComplete="off">
-          <h2>Login to your accout</h2>
+          <FormTitle>Login to your accout</FormTitle>
           <Label htmlFor={`id-${emailInputId}`}>
             <FiMail />
             Email

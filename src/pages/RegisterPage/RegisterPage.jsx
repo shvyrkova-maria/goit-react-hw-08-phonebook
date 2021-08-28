@@ -8,6 +8,7 @@ import { signUp } from 'redux/auth';
 import {
   FormWrap,
   FormStyled,
+  FormTitle,
   FieldStyled,
   Button,
   Label,
@@ -37,7 +38,7 @@ function RegisterPage() {
     >
       <FormWrap>
         <FormStyled autoComplete="off">
-          <h2>Create your accout</h2>
+          <FormTitle>Create your accout</FormTitle>
           <Label htmlFor={`id-${nameInputId}`}>
             <RiUser3Fill />
             Name
